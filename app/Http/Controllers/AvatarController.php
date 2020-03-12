@@ -13,10 +13,6 @@ class AvatarController extends Controller
         
         return view('Avatar',compact('theavatar'));
     }
-    public function show($id){
-    $mesavatar = Avatar::where('id_user','=',$id)->get();
-    return view('mesavatar',compact('mesavatar'));
-    }
     public function create(){
         return view('AvatarAdd');
     }

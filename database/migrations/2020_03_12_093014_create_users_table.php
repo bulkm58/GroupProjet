@@ -30,29 +30,29 @@ public  function up()
 
 Schema::create('users', function (Blueprint $table) {
 
-$table->id();
+    $table->id();
 
-$table->string('name');
+    $table->string('name');
 
-$table->integer('age');
+    $table->integer('age');
 
-$table->string('email')->unique();
+    $table->string('email')->unique();
 
-$table->timestamp('email_verified_at')->nullable();
+    $table->timestamp('email_verified_at')->nullable();
 
-$table->bigInteger('id_avatar')->unsigned();
+    $table->bigInteger('id_avatar')->unsigned();
 
-$table->foreign('id_avatar')
+    $table->foreign('id_avatar')
 
-->on('avatars')
+        ->on('avatars')
 
-->references('id')
+        ->references('id')
 
-->onDelete('cascade')
+        ->onDelete('cascade')
 
-->onUpdate('cascade');
+        ->onUpdate('cascade');
 
-$table->timestamps();
+    $table->timestamps();
 
 });
 
