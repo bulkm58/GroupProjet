@@ -13,6 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Route::get('/avatar','AvatarController@index')->name('intro');
+// Route::get('/avatarAdd','AvatarController@index')->name('home');
+// Route::get('/saveavatar','AvatarController@create')->name('create');
+// route::post('/editavatar/{id}','AvatarController@store')->name('save');
+// route::get('/updateavatar/{id}','AvatarController@edit')->name('administrationch');
+// route::post('/deleteavatar/{id}','AvatarController@update')->name('update');
+// route::get('/mesavatar/{id}','AvatarController@destroy')->name('delete');
+
+Route::get('/','WelcomeController@index')->name('home');
+
 Route::get('/Avatar','AvatarController@index')->name('avatar');
 Route::get('/AvatarAdd','AvatarController@create')->name('Addavatar');
 Route::post('/saveAvatar','AvatarController@store')->name('saveavatar');

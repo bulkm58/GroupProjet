@@ -23,12 +23,12 @@ class AvatarController extends Controller
             ]);
         
         $image=Storage::disk('public')->put('',$request->file('img'));
-        $lesimageavatar = basename($image);
+        
         $lesavatar = new Avatar();
-
-        $lesavatar->img = $lesimageavatar;
+        
+        
         $lesavatar->nom = $request->input('nom');
-       
+       $lesavatar->img = $image;
 
         $lesavatar->save();
 
@@ -54,8 +54,8 @@ class AvatarController extends Controller
 
 
         
-        $lesimageavatar = basename($image);
-        $lesavatar->img = $lesimageavatar;
+        
+        $lesavatar->img = $image;
 
         
         $lesavatar->nom = $request->input('nom');
