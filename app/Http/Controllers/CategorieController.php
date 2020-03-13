@@ -2,84 +2,82 @@
 
 namespace App\Http\Controllers;
 
-use App\Categorie;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use App\Categorie;
 
 class CategorieController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
+    public function index() {
+        $theCategorie = Categorie::all();
+        
+        return view('Categorie',compact('theCategorie'));
+    }
+    public function create(){
+        return view('CategorieAdd');
+    }
+    public function store(Request $request){
+        $request->validate([
+
+             'img' => 'image'
+            ]);
+        
+        $image=Storage::disk('public')->put('',$request->file('img'));
+        $lesimageCategorie = basename($image);
+        $lesCategorie = new Categorie();
+
+        $lesCategorie->img = $lesimageCategorie;
+    
+       
+
+        $lesCategorie->save();
+
+        return redirect()->route('Categorie');
+
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function edit($id){
+
+        $lesCategorie = Categorie::find($id);
+
+      
+        
+        return view('CategorieEdit',compact('lesCategorie'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+
+    public function update(Request $request, $id){
+        
+
+        $lesCategorie = Categorie::find($id);
+        $image=Storage::disk('public')->put('',$request->file('img'));
+
+
+        
+        $lesimageCategorie = basename($image);
+        $lesCategorie->img = $lesimageCategorie;
+
+        
+       
+
+        $lesCategorie->save();
+
+
+        return redirect()->route('Categorie');
+
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Categorie  $categorie
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Categorie $categorie)
-    {
-        //
+
+    public function destroy($id){
+
+        $lesCategorie = Categorie::find($id);
+        Storage::disk('public')->delete($lesCategorie->img);
+
+        $lesCategorie->delete();
+
+        return redirect()->route('Categorie');
+
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Categorie  $categorie
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Categorie $categorie)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Categorie  $categorie
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Categorie $categorie)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Categorie  $categorie
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Categorie $categorie)
-    {
-        //
-    }
 }

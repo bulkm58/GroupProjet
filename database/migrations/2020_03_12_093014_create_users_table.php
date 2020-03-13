@@ -39,6 +39,7 @@ Schema::create('users', function (Blueprint $table) {
     $table->string('email')->unique();
 
     $table->timestamp('email_verified_at')->nullable();
+    
 
     $table->bigInteger('id_avatar')->unsigned();
 
