@@ -27,7 +27,20 @@
  * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
  */
 /*      light colors - used for select dropdown         */
-/*           Font Smoothing      */
+/* Font Smoothing      */
+
+.header-link a{
+    position: absolute;
+    text-decoration: none;
+    font-size: 19px;
+
+ color: black !important;
+}
+.header-link{
+   
+ z-index: 20 !important;
+
+}
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6, p, .navbar, .brand, a, .td-name, td, button, input, select, textarea {
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
@@ -5965,7 +5978,7 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6, p, .navbar, .brand, a, .td
   
   .moving-clouds {
     position: absolute;
-    z-index: 1;
+ 
     bottom: 0;
     left: 0;
     width: 250.625em;

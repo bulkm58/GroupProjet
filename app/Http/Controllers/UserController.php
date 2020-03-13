@@ -22,14 +22,14 @@ class UserController extends Controller
             'name' => 'required|min:3',
             'email' => 'required|email:rfc,dns',
             'age' => 'required|max:140|integer',
-            'img' => 'image',
+            'id' => 'required|min:3',
             ]);
        
         $administration = new User();
         $administration->name = $request->input('name');
         $administration->email = $request->input('email');
         $administration->age = $request->input('age');
-        $administration->img = $request->input('id_avatar');
+        $administration->id = $request->input('id_avatar');
         $administration->save();
         return redirect()->route('User');
     }
@@ -43,7 +43,7 @@ class UserController extends Controller
         $administration->name = $request->input('name');
         $administration->email = $request->input('email');
         $administration->age = $request->input('age');
-        $administration->img = $request->input('id_avatar');
+        $administration->id = $request->input('id_avatar');
         
 
         $administration->save();
