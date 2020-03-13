@@ -21,15 +21,19 @@ Route::post('/updateavatar/{id}','AvatarController@update')->name('updateavatar'
 Route::get('/deleteavatar/{id}','AvatarController@destroy')->name('destroyavatar');
 
 
-
-
-
-
 Route::get('/User','UserController@index')->name('user');
 Route::get('/UserAdd','UserController@create')->name('Adduser');
 route::post('/saveUser','UserController@store')->name('saveuser');
 route::get('/Useredit/{id}','UserController@edit')->name('edituser');
 route::post('/upadteuser/{id}','UserController@update')->name('updateuser');
 route::get('/deleteuser/{id}','UserController@destroy')->name('destroyuser');
+
+
+Route::get('/Categorie','CategorieController@index')->name('Categorie');
+Route::get('/AddCategorie','CategorieController@create')->name('AddCategorie');
+route::post('/saveCategorier','CategorieController@store')->name('saveCategorie');
+route::get('/Categorieedit/{id}','CategorieController@edit')->name('editCategorie');
+route::post('/upadteCategorie/{id}','CategorieController@update')->name('updateCategorie');
+route::get('/deleteCategorie/{id}','CategorieController@destroy')->name('destroyCategorie');
 
 

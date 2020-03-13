@@ -22,14 +22,14 @@ class UserController extends Controller
             'name' => 'required|min:3',
             'email' => 'required|email:rfc,dns',
             'age' => 'required|max:140|integer',
-            'img' => 'image'
+            'img' => 'image',
             ]);
-        $image=Storage::disk('public')->put('',$request->file('img'));
+       
         $administration = new User();
         $administration->name = $request->input('name');
         $administration->email = $request->input('email');
         $administration->age = $request->input('age');
-        $administration->img = $image;
+        $administration->img = $request->input('id_avatar');
         $administration->save();
         return redirect()->route('User');
     }
@@ -38,12 +38,13 @@ class UserController extends Controller
         return view('Useredit',compact('administration'));
     }
     public function update(Request $request, $id){
-        $image=Storage::disk('public')->put('',$request->file('img'));
+      
         $administration = User::find($id);
         $administration->name = $request->input('name');
         $administration->email = $request->input('email');
         $administration->age = $request->input('age');
-        $administration->img = $image;
+        $administration->img = $request->input('id_avatar');
+        
 
         $administration->save();
         return redirect()->route('User');
